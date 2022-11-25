@@ -1,0 +1,7 @@
+[default]
+cargo run --example simple
+
+[check]
+cargo clippy --examples -- -D warnings
+cargo test
+cargo fmt
