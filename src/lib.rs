@@ -2,9 +2,8 @@ pub mod model;
 
 use std::path::Path;
 
-use anyhow::{bail, Result};
-use gltf::Gltf;
-use model::{Material, Model, ModelID};
+use anyhow::Result;
+use model::{Material, Model, ModelID, Vertex};
 use rhachis::{graphics::Renderer, GameData, IdMap};
 use wgpu::TextureView;
 
@@ -48,10 +47,10 @@ impl VeRenderer {
 
     /// Returns a list of the added models.
     pub fn load_gltf<P: AsRef<Path>>(&mut self, path: P, scene: usize) -> Result<Vec<ModelID>> {
-        let gltf = Gltf::open(path)?;
-        if let Some(scene) = gltf.scenes().nth(scene) {
-        } else {
-            bail!("Unable to find scene {scene}")
+        let scene = &easy_gltf::load(path).unwrap()[scene];
+        for model in &scene.models {
+            let vertices: Vec<_> = model.vertices().iter().map(Vertex::from).collect();
+            dbg!(vertices);
         }
         todo!()
     }

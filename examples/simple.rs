@@ -11,7 +11,7 @@ impl Game for Simple {
     fn init(data: &GameData) -> Self {
         let mut renderer =
             VeRendererBuilder::render_pass_builder(RenderPassBuilder::label("Test")).build(data);
-        let models = renderer.load_gltf("examples/simple.gltf", 0).unwrap();
+        let models = renderer.load_gltf("examples/cube.gltf", 0).unwrap();
 
         Self {
             renderer,

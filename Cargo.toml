@@ -7,7 +7,8 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.66"
+bytemuck = "1.12.3"
+easy-gltf = "0.1.5"
 glam = "0.22.0"
-gltf = "1.0.0"
 rhachis = "0.6"
 wgpu = "0.14"
