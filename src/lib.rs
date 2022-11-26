@@ -41,6 +41,11 @@ pub struct VeRenderer {
 }
 
 impl VeRenderer {
+    pub fn clear(&mut self) {
+        self.models.clear();
+        self.materials.clear();
+    }
+
     /// Returns a list of the added models.
     pub fn load_gltf<P: AsRef<Path>>(&mut self, path: P, scene: usize) -> Result<Vec<ModelID>> {
         let gltf = Gltf::open(path)?;
